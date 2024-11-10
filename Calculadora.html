@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Básica</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        background-image: url(fondo.avif);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      header {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .calculadora {
+        width: 300px;
+        background-color: #333;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        margin-top: 20px;
+      }
+      .pantalla {
+        width: 93%;
+        height: 60px;
+        background-color: #222;
+        color: #fff;
+        font-size: 2rem;
+        text-align: right;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .botones {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+      }
+      .boton {
+        width: 100%;
+        height: 60px;
+        background-color: #444;
+        color: #fff;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .boton:active {
+        background-color: #555;
+      }
+      .boton-operador {
+        background-color: #d5f68b;
+        color: black;
+      }
+      .boton-operador:active {
+        background-color: #d5f68b;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="titulo">PokéCalculadora</div>
+    </header>
+    <div class="calculadora">
+      <div class="pantalla" id="pantalla">0</div>
+      <div class="botones">
+        <button class="boton" onclick="agregarNumero('7')">7</button>
+        <button class="boton" onclick="agregarNumero('8')">8</button>
+        <button class="boton" onclick="agregarNumero('9')">9</button>
+        <button class="boton boton-operador" onclick="operar('/')">/</button>
+        <button class="boton" onclick="agregarNumero('4')">4</button>
+        <button class="boton" onclick="agregarNumero('5')">5</button>
+        <button class="boton" onclick="agregarNumero('6')">6</button>
+        <button class="boton boton-operador" onclick="operar('*')">*</button>
+        <button class="boton" onclick="agregarNumero('1')">1</button>
+        <button class="boton" onclick="agregarNumero('2')">2</button>
+        <button class="boton" onclick="agregarNumero('3')">3</button>
+        <button class="boton boton-operador" onclick="operar('-')">-</button>
+        <button class="boton" onclick="agregarNumero('0')">0</button>
+        <button class="boton" onclick="agregarNumero('.')">.</button>
+        <button class="boton" onclick="limpiar()">C</button>
+        <button class="boton boton-operador" onclick="operar('+')">+</button>
+        <button
+          class="boton boton-operador"
+          style="grid-column: span 4"
+          onclick="calcular()"
+        >
+          =
+        </button>
+      </div>
+    </div>
+    <script>
+let pantalla = document.getElementById('pantalla');
+let operador = '';
+let operadorActual = '';
+let operandoAnterior = '';
+let resultado = 0;
+let esperandoNuevoOperando = false;
+
+function agregarNumero(numero) {
+    if (pantalla.innerText === '0' || esperandoNuevoOperando) {
+        pantalla.innerText = numero;
+        esperandoNuevoOperando = false;
+    } else {
+        pantalla.innerText += numero;
+    }
+    operadorActual += numero;
+}
+
+function operar(op) {
+    if (operadorActual === '' && operador !== '') {
+        operador = op;
+        pantalla.innerText = pantalla.innerText.slice(0, -1) + op;
+        return;
+    }
+
+    if (operadorActual !== '') {
+        if (operandoAnterior !== '') {
+            calcular();
+        } else {
+            resultado = parseFloat(operadorActual);
+        }
+    }
+
+    operador = op;
+    operandoAnterior = operadorActual;
+    operadorActual = '';
+    esperandoNuevoOperando = true;
+    pantalla.innerText += op;
+}
+
+function calcular() {
+    let current = parseFloat(operadorActual);
+
+    if (isNaN(resultado) || isNaN(current)) return;
+
+    switch (operador) {
+        case '+':
+            resultado += current;
+            break;
+        case '-':
+            resultado -= current;
+            break;
+        case '*':
+            resultado *= current;
+            break;
+        case '/':
+            if (current === 0) {
+                pantalla.innerText = 'No se puede dividir entre 0';
+                return;
+            }
+            resultado /= current;
+            break;
+        default:
+            return;
+    }
+
+    operadorActual = resultado.toString();
+    operador = '';
+    operandoAnterior = '';
+    pantalla.innerText = resultado;
+    esperandoNuevoOperando = true;
+}
+
+function limpiar() {
+    pantalla.innerText = '0';
+    operador = '';
+    operadorActual = '';
+    operandoAnterior = '';
+    resultado = 0;
+    esperandoNuevoOperando = false;
+}
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "MiFuente";
+    src: url("font/Pokemon Solid.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  body {
+    background-color: #010000;
+    margin: 0;
+  }
+  header {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .titulo {
+    font-family: 'MiFuente', sans-serif;
+    font-size: 45px;
+    color: #ffcd0d;
+    text-shadow: 2px 2px 0px black, -3px 3px 0px black, 3px -3px 0px black, -3px -3px 0px black;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+  .container{
+    display: flex;
+    
+  }
+  
