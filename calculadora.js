@@ -50,7 +50,7 @@ function calcular() {
             resultado -= current;
             break;
         case '*':
-            resultado *= current;
+            resultado = multiplicarSinSigno(current,resultado)
             break;
         case '/':
             if (current === 0) {
@@ -68,6 +68,14 @@ function calcular() {
     operandoAnterior = '';
     pantalla.innerText = resultado;
     esperandoNuevoOperando = true;
+}
+function multiplicarSinSigno(op1, op2){
+    total=0
+    for (let i = 0; i < op2; i++) {
+        total+=op1;
+        
+    }
+    return total;
 }
 
 function limpiar() {
