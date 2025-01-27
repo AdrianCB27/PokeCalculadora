@@ -8,6 +8,8 @@ https://adriancb27.github.io/PokeCalculadora/
 
 La app simula el funcionamiento de una calculadora como la que encontramos en los móviles. 🧮  
 Cada aspecto de la aplicación, desde el diseño visual hasta la lógica interna, fue implementado por mí como parte de mi proceso de aprendizaje.
+
+
 ![image](https://github.com/user-attachments/assets/56a9f04a-abae-4911-9592-73a5566e383c)
 
 
