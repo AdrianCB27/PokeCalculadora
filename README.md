@@ -1,11 +1,15 @@
 # Calculadora App
 
+https://adriancb27.github.io/PokeCalculadora/
+
 ¡Bienvenid@! 👋 Esta es una aplicación que desarrollé durante mis primeros meses aprendiendo JavaScript. Fue un proyecto muy especial para mí, ya que en él pude combinar diseño y lógica, ambos creados completamente desde cero.
 
 ## 📋 Descripción
 
 La app simula el funcionamiento de una calculadora como la que encontramos en los móviles. 🧮  
 Cada aspecto de la aplicación, desde el diseño visual hasta la lógica interna, fue implementado por mí como parte de mi proceso de aprendizaje.
+![image](https://github.com/user-attachments/assets/56a9f04a-abae-4911-9592-73a5566e383c)
+
 
 ## 🚀 Características
 
